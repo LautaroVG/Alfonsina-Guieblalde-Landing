@@ -1,7 +1,23 @@
-import { Camera, MessageCircle, Mic2, Music, ArrowRight, Mail } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Camera, MessageCircle, Mic2, Music, ArrowRight, Mouse, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function LandingCantante() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -37,16 +53,16 @@ export default function LandingCantante() {
       <header className="relative h-screen flex flex-col items-center justify-center text-center px-6">
         <motion.div 
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
+          animate={{ opacity: 0.6 }}
           transition={{ duration: 1.5 }}
           className="absolute inset-0 z-0"
         >
           <img 
             src="/alfon3.webp" 
             alt="Fondo de escenario" 
-            className="w-full h-full object-cover object-center grayscale"
+            className="w-full h-full object-cover object-[center_40%] grayscale"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/80 to-black"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black"></div>
         </motion.div>
         
         <motion.div 
@@ -80,10 +96,29 @@ export default function LandingCantante() {
           </motion.div>
 
         </motion.div>
+
+        {/* INDICADOR DE SCROLL INTELIGENTE */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isScrolled ? 0 : 1 }}
+          transition={{ delay: isScrolled ? 0 : 1.5, duration: 0.5 }}
+          className={`absolute bottom-10 left-1/2 -translate-x-1/2 text-[#D4AF37]/70 hover:text-[#D4AF37] transition-colors cursor-pointer animate-bounce z-20 ${isScrolled ? 'pointer-events-none' : ''}`}
+        >
+          <a href="#bio" className="flex flex-col items-center gap-2">
+            <div className="hidden sm:flex flex-col items-center gap-2">
+              <Mouse size={24} />
+              <span className="text-[10px] uppercase tracking-widest font-bold">Scroll Down</span>
+            </div>
+            <div className="flex sm:hidden flex-col items-center">
+              <ChevronDown size={32} />
+            </div>
+          </a>
+        </motion.div>
+
       </header>
 
       {/* BIO / PERFIL */}
-      <section className="py-24 px-6 md:px-12 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 overflow-hidden bg-black">
+      <section id="bio" className="py-24 px-6 md:px-12 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 overflow-hidden bg-black">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -96,7 +131,7 @@ export default function LandingCantante() {
             <img 
               src="/alfon14.webp" 
               alt="Retrato de Alfonsina" 
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
+              className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
             />
           </div>
         </motion.div>
@@ -193,7 +228,7 @@ export default function LandingCantante() {
                 loading="lazy"
                 src={src} 
                 alt={`Portfolio ${index + 1}`} 
-                className="w-full h-64 md:h-96 object-cover grayscale hover:grayscale-0 transition-all duration-700 opacity-70 hover:opacity-100 hover:scale-105" 
+                className="w-full h-64 md:h-96 object-cover transition-all duration-700 opacity-80 hover:opacity-100 hover:scale-105" 
               />
             </div>
           ))}
