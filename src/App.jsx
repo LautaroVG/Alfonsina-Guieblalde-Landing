@@ -96,7 +96,7 @@ export default function LandingCantante() {
           transition={{ duration: 1, delay: 0.5 }}
           className="absolute top-0 left-0 w-full flex justify-between items-center p-6 md:px-12 z-40 bg-black/50 backdrop-blur-sm border-b border-white/5"
         >
-          <span className="font-serif text-xl tracking-widest font-bold text-[#D4AF37]">Alfonsina<br/>GUIBELALDE</span>
+          <span className="font-serif text-xl leading-tight text-white">Alfonsina<br/>GUIBELALDE</span>
           <a href="#contacto" className="text-sm font-medium tracking-wide uppercase text-neutral-300 hover:text-[#E6C762] transition-colors">
             Contacto
           </a>
@@ -193,10 +193,10 @@ export default function LandingCantante() {
         >
           <h2 className="font-serif text-4xl md:text-5xl text-white">Más que técnica,<br/><span className="text-[#D4AF37]">es emoción.</span></h2>
           <div className="w-12 h-0.5 bg-[#D4AF37]"></div>
-          <p className="text-neutral-400 leading-relaxed">
-            Soy cantante, arregladora vocal y docente. Mi identidad musical se construye a través del Soul, el RnB y el Jazz, géneros que exploré profundamente durante mi formación en la EMBA y mi paso por el Seminario del CLAEM en República Dominicana, donde fui becada para perfeccionar mi tecnica y estilo vocal.
+          <p className="text-neutral-400 leading-relaxed text-justify">
+            Soy cantante, arregladora vocal y docente. Mi identidad musical se construye a través del Soul, el RnB y el Jazz, géneros que exploré profundamente durante mi formación en la EMBA y mi paso por el Seminario del CLAEM en República Dominicana, donde fui becada para perfeccionar mi técnica y estilo vocal.
           </p>
-          <p className="text-neutral-400 leading-relaxed">
+          <p className="text-neutral-400 leading-relaxed text-justify">
             Para mí, el escenario es el lugar donde todo cobra sentido. He tenido el placer de recorrer la escena porteña presentándome en espacios como Bebop Club, La Tangente, Niceto Club, Ciudad Cultural Konex y Café Berlín, tanto en proyectos propios como en sesiones en vivo. Esa misma pasión por la interpretación es la que hoy vuelco en mi labor docente, acompañando a cada estudiante a descubrir su propia voz y sensibilidad musical.
           </p>
         </motion.div>
