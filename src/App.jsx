@@ -3,13 +3,13 @@ import { Camera, MessageCircle, Mic2, Music, ArrowRight, Mouse, ChevronDown } fr
 import { motion } from 'framer-motion';
 import { supabase } from './supabaseClient';
 import MusicPlayer from './components/MusicPlayer';
-import { Helmet, HelmetProvider } from 'react-helmet-async'; // <-- IMPORTAMOS EL SEO
+import { Helmet, HelmetProvider } from 'react-helmet-async'; 
 
 export default function LandingCantante() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showData, setShowData] = useState({ text: '', link: '', active: false });
 
-  // EFECTO 1: Escuchar el scroll para borrar la flechita
+  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -22,7 +22,7 @@ export default function LandingCantante() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // EFECTO 2: Leer Supabase para el Banner de Próximo Show
+ 
   useEffect(() => {
     const fetchProximoShow = async () => {
       const { data, error } = await supabase
@@ -67,7 +67,7 @@ export default function LandingCantante() {
     <HelmetProvider>
       <div className="min-h-screen bg-black text-white font-sans selection:bg-[#D4AF37] selection:text-black">
         
-        {/* LA MAGIA INVISIBLE PARA GOOGLE */}
+        
         <Helmet>
           <html lang="es" />
           <title>Alfonsina Guibelalde | Cantante Profesional y Docente de Canto</title>
@@ -78,7 +78,7 @@ export default function LandingCantante() {
           <meta property="og:image" content="/alfon3.webp" />
         </Helmet>
 
-        {/* 1. BANNER INTELIGENTE */}
+       
         {showData.active && (
           <motion.div 
             initial={{ scale: 0.8, opacity: 0, x: "-50%" }}
@@ -100,10 +100,10 @@ export default function LandingCantante() {
           </motion.div>
         )}
 
-        {/* 2. HERO SECTION */}
+        
         <header className="relative h-[100dvh] flex flex-col items-center justify-center text-center px-6">
           
-          {/* NAVEGACIÓN */}
+          
           <motion.nav 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -116,14 +116,14 @@ export default function LandingCantante() {
             </a>
           </motion.nav>
 
-          {/* FONDO DEL HERO */}
+          
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.6 }}
             transition={{ duration: 1.5 }}
             className="absolute inset-0 z-0"
           >
-            {/* SEO: Mejoramos el ALT */}
+            
             <img 
               src="/alfon3.webp" 
               alt="Alfonsina Guibelalde cantando en vivo en el escenario" 
@@ -132,19 +132,19 @@ export default function LandingCantante() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black"></div>
           </motion.div>
           
-          {/* TEXTOS DEL HERO */}
+          
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
             className="relative z-10 max-w-4xl w-full"
           >
-            {/* SEO: Transformado a H1 para que Google sepa de quién es la página, sin cambiar el diseño */}
+           
             <motion.h1 variants={fadeUp} className="text-[#D4AF37] font-semibold tracking-widest uppercase mb-4 text-sm md:text-base drop-shadow-md">
               Alfonsina Guibelalde | Cantante Profesional
             </motion.h1>
             
-            {/* SEO: Transformado a H2 (sigue viéndose gigante y espectacular) */}
+            
             <motion.h2 variants={fadeUp} className="font-serif text-5xl md:text-8xl leading-tight text-white mb-6">
               Soulful Vocals<br className="hidden md:block" />
             </motion.h2>
@@ -163,7 +163,7 @@ export default function LandingCantante() {
             </motion.div>
           </motion.div>
 
-          {/* INDICADOR DE SCROLL */}
+         
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: isScrolled ? 0 : 1 }}
@@ -182,7 +182,7 @@ export default function LandingCantante() {
           </motion.div>
         </header>
 
-        {/* BIO / PERFIL */}
+        
         <section id="bio" className="py-24 px-6 md:px-12 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 overflow-hidden bg-black">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
@@ -193,7 +193,7 @@ export default function LandingCantante() {
           >
             <div className="aspect-[3/4] overflow-hidden border border-[#D4AF37]/20 relative">
               <div className="absolute inset-0 bg-[#D4AF37]/10 z-10 mix-blend-overlay hover:opacity-0 transition-opacity duration-700"></div>
-              {/* SEO: Mejoramos el ALT */}
+              
               <img 
                 src="/alfon14.webp" 
                 alt="Retrato profesional de la cantante Alfonsina Guibelalde" 
@@ -220,7 +220,7 @@ export default function LandingCantante() {
           </motion.div>
         </section>
 
-        {/* SERVICIOS DUALES */}
+       
         <section className="py-24 bg-neutral-950 px-6 md:px-12 border-y border-neutral-900">
           <motion.div 
             variants={staggerContainer}
@@ -257,7 +257,7 @@ export default function LandingCantante() {
           </motion.div>
         </section>
 
-        {/* PORTFOLIO ROTATIVO (CARRUSEL INFINITO) */}
+        
         <section className="py-12 bg-black relative overflow-hidden">
             <div className="absolute left-0 top-0 bottom-0 w-16 md:w-48 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
             <div className="absolute right-0 top-0 bottom-0 w-16 md:w-48 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
@@ -274,7 +274,7 @@ export default function LandingCantante() {
                 "/alfon6.webp", "/alfon13.webp"
               ].map((src, index) => (
               <div key={index} className="w-64 md:w-96 shrink-0 overflow-hidden border border-neutral-900 bg-neutral-950 transform-gpu">
-                {/* SEO: Mejoramos el ALT de cada foto del carrusel */}
+                
                 <img 
                    loading="lazy"
                    src={src} 
@@ -286,7 +286,7 @@ export default function LandingCantante() {
             </motion.div>
         </section>
 
-        {/* CONTACTO */}
+        
         <motion.section 
           id="contacto" 
           initial="hidden"
@@ -341,7 +341,7 @@ export default function LandingCantante() {
           </motion.div>
         </motion.section>
 
-        {/* FOOTER */}
+       
         <footer className="py-8 border-t border-neutral-900 text-center px-6 bg-black pb-32 md:pb-8">
           <p className="text-xs text-neutral-600 tracking-widest uppercase">
             © {new Date().getFullYear()} Alfonsina Guibelalde. Todos los derechos reservados.
