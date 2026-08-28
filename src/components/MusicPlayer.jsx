@@ -17,7 +17,7 @@ export default function MusicPlayer() {
   };
 
   return (
-    /* Contenedor con la posición adaptativa para celular y PC */
+   
     <div className="fixed top-[92px] md:bottom-6 md:top-auto right-6 z-50 flex items-center gap-2 select-none">
       
       <AnimatePresence>
